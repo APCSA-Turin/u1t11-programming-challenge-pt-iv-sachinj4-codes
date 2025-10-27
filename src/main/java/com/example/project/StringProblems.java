@@ -25,7 +25,15 @@ public class StringProblems{
     // conCat("abc", "cat") → "abcat"
     // conCat("dog", "cat") → "dogcat"
     // conCat("abc", "") → "abc"
+
+    // Debug this
     public String conCat(String s1, String s2){
+        if (s1.length() < 1 || s2.length() < 1) {
+            return s1 + s2;
+        }
+        if (s1.substring(s1.length()-1).equals(s2.substring(0,1))) {
+            return s1.substring(0, s1.length()-1) + s2;
+        }
         return s1 + s2;
     }
 
@@ -40,13 +48,19 @@ public class StringProblems{
     //deFront("ab") -> "ab"
     //deFront("a") -> "a"
     //deFront("ba") -> ""
+
+
+    // Debug this 
     public String deFront(String s1){
-        if (s1.length() <= 2) {
-            return "";
+        if (s1.substring(0,1).equals("a") && s1.substring(1,2).equals("b")) {
+            return s1;
+        } else if (s1.substring(0,1).equals("a")) {
+            return s1.substring(0,1) + s1.substring(2,s1.length());
+        } else if (s1.substring(1,2).equals("b")) {
+            return s1.substring(1,s1.length());
         } else {
-            return word.substring(2,word.length());
+            return s1.substring(2, s1.length());
         }
-        return "";
     }
 
     
@@ -57,15 +71,18 @@ public class StringProblems{
     // withoutX("xHi") → "Hi"
     // withoutX("Hxix") → "Hxi"
     // withoutX("") → ""
+
+    //Debug this
     public String withoutX(String s1){
-        if (s1.indexOf("x") >= 0) {
-            if (s1.indexOf("x") == 0) {
-                return s1.substring(1,s1.length());
-            } else if (s1.indexOf("x") == s1.length()-1) {
-                return s1.substring(1,s1.length()-1);
+        if (s1.indexOf("x") == 0) {
+            String newWord = s1.substring(1,s1.length());
+            if (newWord.indexOf("x") == newWord.length()-1) {
+                return newWord.substring(0,newWord.length()-1);
+            } else {
+                return newWord;
             }
-        }
-        return s1;
+        } 
+        return s1.substring(0,s1.length()-1);
     }
 
     // Given a string str, if the string starts with "f" return "Fizz".
@@ -96,12 +113,12 @@ public class StringProblems{
     // fizzString2(2) → "2!"
     // fizzString2(3) → "Fizz!"
     public String fizzString2(int x){
-        if (x % 3 == 0 && x % 2 == 0) {
-            return "FizzBuzz";
+        if (x % 3 == 0 && x % 5 == 0) {
+            return "FizzBuzz!";
         } else if (x % 3 == 0) {
-            return "Fizz";
-        } else if (x % 2 == 0) {
-            return "Buzz";
+            return "Fizz!";
+        } else if (x % 5 == 0) {
+            return "Buzz!";
         } else {
             return (x + "!");
         }
