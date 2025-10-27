@@ -10,7 +10,11 @@ public class StringProblems{
     // endsLy("oddy") → false
     public boolean endsLy(String x){
             //implement code here
-
+        if (x.length() < 2) {
+            return false;
+        } else if (x.substring(x.length()-2, x.length()).equals("ly")) {
+            return true;
+        }
         return false;
     }
 
@@ -22,8 +26,7 @@ public class StringProblems{
     // conCat("dog", "cat") → "dogcat"
     // conCat("abc", "") → "abc"
     public String conCat(String s1, String s2){
-     
-        return "";
+        return s1 + s2;
     }
 
     // Given a string, return a version without the first 2 chars. 
@@ -38,7 +41,11 @@ public class StringProblems{
     //deFront("a") -> "a"
     //deFront("ba") -> ""
     public String deFront(String s1){
-           
+        if (s1.length() <= 2) {
+            return "";
+        } else {
+            return word.substring(2,word.length());
+        }
         return "";
     }
 
@@ -51,7 +58,14 @@ public class StringProblems{
     // withoutX("Hxix") → "Hxi"
     // withoutX("") → ""
     public String withoutX(String s1){
-        return "";
+        if (s1.indexOf("x") >= 0) {
+            if (s1.indexOf("x") == 0) {
+                return s1.substring(1,s1.length());
+            } else if (s1.indexOf("x") == s1.length()-1) {
+                return s1.substring(1,s1.length()-1);
+            }
+        }
+        return s1;
     }
 
     // Given a string str, if the string starts with "f" return "Fizz".
@@ -62,7 +76,14 @@ public class StringProblems{
     // fizzString("dib") → "Buzz"
     // fizzString("fib") → "FizzBuzz"
     public String fizzString(String s1){
-        return "";
+        if (s1.indexOf("f") == 0 && s1.indexOf("b") == s1.length()-1) {
+            return "FizzBuzz";
+        } else if (s1.indexOf("f") == 0) {
+            return "Fizz";
+        } else if (s1.indexOf("b") == s1.length()-1) {
+            return "Buzz";
+        }
+        return s1;
     }
 
     // Given an int n, return the string form of the number followed 
@@ -75,6 +96,14 @@ public class StringProblems{
     // fizzString2(2) → "2!"
     // fizzString2(3) → "Fizz!"
     public String fizzString2(int x){
-        return "";
+        if (x % 3 == 0 && x % 2 == 0) {
+            return "FizzBuzz";
+        } else if (x % 3 == 0) {
+            return "Fizz";
+        } else if (x % 2 == 0) {
+            return "Buzz";
+        } else {
+            return (x + "!");
+        }
     }
 }
